@@ -16,18 +16,3 @@ export const Logo = styled.h4`
     cursor: pointer;
   }
 `;
-
-export const Login = styled.button`
-  padding: 10px 30px;
-  outline: none;
-  border: none;
-  border-radius: 7px;
-  background: #093A3E;
-  color: #fff;
-  font-weight: bold;
-
-
-  &:hover {
-    background: #3AAFB9;
-  }
-`;
