@@ -9,16 +9,16 @@ import Button from './style';
 
 const TableBody = ({ products }) => (
   <TableBodyUI>
-    {products.map((product) => (
-      <TableRow key={product.id}>
+    {products && products.map(({ _id, product }) => (
+      <TableRow key={_id}>
         <TableCell align="center">
-          {product.id}
+          {_id}
         </TableCell>
-        <TableCell align="center">{product.name}</TableCell>
+        <TableCell align="center">{product.productName}</TableCell>
         <TableCell align="center">{product.quantity}</TableCell>
         <TableCell align="center">
           $
-          {product.price.toFixed(2)}
+          {Number(product.price).toFixed(2)}
         </TableCell>
         <TableCell align="center">
           <Button variant="contained" size="small">Select</Button>
@@ -32,10 +32,10 @@ const TableBody = ({ products }) => (
 export default TableBody;
 
 TableBody.propTypes = {
-  products: PropTypes.arrayOf({
+  products: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     quantity: PropTypes.number,
     price: PropTypes.number,
-  }).isRequired,
+  })).isRequired,
 };
