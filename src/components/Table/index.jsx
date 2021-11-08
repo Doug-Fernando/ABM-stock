@@ -7,7 +7,7 @@ import {
 import { Container, LoadAnimation } from './style';
 import TableBody from '../TableBody';
 
-import { getProducts } from '../../api/products';
+import { getProducts, deleteProduct } from '../../api/products';
 
 const Table = () => {
   const [products, setProducts] = useState([]);
@@ -18,6 +18,11 @@ const Table = () => {
     setProducts(fetchProducts);
     setLoading(false);
   }, []);
+
+  const handleDelete = (id) => {
+    setProducts(products.filter(({ _id }) => _id !== id));
+    deleteProduct(id);
+  };
 
   return (
     <>
@@ -34,7 +39,7 @@ const Table = () => {
                   <TableCell align="center">Actions</TableCell>
                 </TableRow>
               </TableHead>
-              <TableBody products={products} />
+              <TableBody products={products} deleteProduct={handleDelete} />
             </TableUI>
           </Container>
         )}

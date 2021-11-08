@@ -7,7 +7,7 @@ import {
 
 import Button from './style';
 
-const TableBody = ({ products }) => (
+const TableBody = ({ products, deleteProduct }) => (
   <TableBodyUI>
     {products && products.map(({ _id, product }) => (
       <TableRow key={_id}>
@@ -22,7 +22,14 @@ const TableBody = ({ products }) => (
         </TableCell>
         <TableCell align="center">
           <Button variant="contained" size="small">Select</Button>
-          <Button variant="contained" size="small" color="error">Delete</Button>
+          <Button
+            variant="contained"
+            size="small"
+            color="error"
+            onClick={() => deleteProduct(_id)}
+          >
+            Delete
+          </Button>
         </TableCell>
       </TableRow>
     ))}
@@ -38,4 +45,5 @@ TableBody.propTypes = {
     quantity: PropTypes.number,
     price: PropTypes.number,
   })).isRequired,
+  deleteProduct: PropTypes.func.isRequired,
 };

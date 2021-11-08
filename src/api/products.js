@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const URLHASH = '5d997c178bcc4a2fab78cb22473569cd';
+const URLHASH = '1904c458eea94244ae9a665e664b1fe8';
 const URL = `https://crudcrud.com/api/${URLHASH}/products`;
 
 const createProduct = (name, quantity, price) => ({ name, quantity, price });
@@ -15,3 +15,5 @@ export const createProducts = async () => {
 export const addProductDB = async (data) => axios.post(URL, data).then((response) => response);
 
 export const getProducts = () => axios.get(URL).then((response) => response.data);
+
+export const deleteProduct = (id) => axios.delete(`${URL}/${id}`).then((response) => response);
